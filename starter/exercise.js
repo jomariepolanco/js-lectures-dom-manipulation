@@ -21,3 +21,51 @@ const animalData = [
 ]
 
 // Get all these objects to display in the DOM
+
+function renderOneAnimal(animalObj) {
+  //create outer element
+  const card = document.createElement("li")
+  card.className = "card"
+  //user innerHTML to create all of its children
+  card.innerHTML = ` <div class="image">
+  <img src = "${animalObj.imageUrl}" alt="${animalObj.name}">
+</div>
+<div class="content">
+  <h4>${animalObj.name}</h4>
+  <p class="description">${animalObj.description}</p>
+</div>
+<button class="button donate-button" data-action-"donate">
+  $<span class="donation-count">${animalObj.donations}</span> Donated
+</button>`
+
+//slap it on the dom
+document.querySelector("#animal-list").append(card)
+  console.log(animalObj)
+}
+
+// function renderAllAnimals(animalData) {
+//   animalData.forEach(function(animalObj) {
+//     renderOneAnimal(animalObj)
+//   })
+// }
+
+function renderAllAnimals(animalData) {
+  animalData.forEach(renderOneAnimal)
+}
+
+renderAllAnimals(animalData)
+// renderOneAnimal(animalData[1])
+// renderOneAnimal(animalData[0])
+
+/* <li class="card">
+  <div class="image">
+    <img src = "https...." alt="red panda">
+  </div>
+  <div class="content">
+    <h4>Red Panda</h4>
+    <p class="description">not actually a panda</p>
+  </div>
+  <button class="button donate-button" data-action-"donate">
+    $<span class="donation-count">0</span> Donated
+  </button>
+</li> */
